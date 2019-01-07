@@ -8,6 +8,7 @@ const initialState = {
 };
 
 export const reducer = (state=initialState, action) => {
+    console.log(action);
     if (action.type === RESTART_GAME){
         return Object.assign({}, state, {
             guesses: [],
