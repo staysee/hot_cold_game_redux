@@ -7,14 +7,14 @@ const initialState = {
     correctAnswer: Math.floor(Math.random() * 100) + 1
 };
 
-export const reducer = (state=initialState, action) => {
+export default (state=initialState, action) => {
     console.log(action);
     if (action.type === RESTART_GAME){
         return Object.assign({}, state, {
             guesses: [],
             feedback: 'Make your guess!',
             auralStatus: '',
-            correctAnswer: Math.floor(Math.random() * 100) + 1 //why is this action.correctAnswer?
+            correctAnswer: action.correctAnswer
         })
     }
 
@@ -22,14 +22,14 @@ export const reducer = (state=initialState, action) => {
         let guess;
         let feedback;
 
-        guess = parseInt(guess, 10);
+        guess = parseInt(action.guess, 10);
 
         if (isNaN(guess)) {
             feedback = 'Please enter a valid number.';
 
             return Object.assign({}, state, {
                 feedback,
-                guesses: [...state.guesses.guess]
+                guesses: [...state.guesses, guess]
             })
         }
 

@@ -1,9 +1,9 @@
-import {createStore, compose} from 'redux'
+import {createStore, compose} from 'redux';
 
-import {reducer} from './reducers'
+import reducer from './reducers';
 
-const enhancers = compose(
+const reduxDevTools = compose(
     window.devToolsExtension ? window.devToolsExtension() : f => f
 );
 
-export default createStore(reducer, enhancers)
+export default createStore(reducer, reduxDevTools);
