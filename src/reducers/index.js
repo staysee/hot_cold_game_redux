@@ -47,7 +47,7 @@ export default (state=initialState, action) => {
             feedback = 'You got it!';
         }
 
-        Object.assign({}, state, {
+        return Object.assign({}, state, {
             feedback,
             guesses: [...state.guesses, guess]
         })
